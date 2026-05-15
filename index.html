@@ -13,7 +13,7 @@
 :root{
   --bg:#f5f2eb;--bg2:#ede9df;--bg3:#e4dfd3;
   --ink:#1a1814;--ink2:#4a4640;--ink3:#8a857d;
-  --accent:#c8500a;--accent2:#2563eb;--accent3:#16a34a;
+  --accent:#c8500a;--accent2:#2563eb;--accent3:#16a34a;--accent4:#7c3aed;
   --border:rgba(26,24,20,0.12);--card:#fff;
   --shadow:0 1px 3px rgba(0,0,0,0.08),0 4px 16px rgba(0,0,0,0.06);
   --tab-h:60px;--top-h:52px;
@@ -30,19 +30,42 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif
 .main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg)}
 .page{display:none;padding:20px 16px;padding-bottom:calc(var(--tab-h) + var(--safe-b) + 20px);max-width:680px;margin:0 auto}
 .page.active{display:block}
-.tabbar{background:var(--card);border-top:1px solid var(--border);display:flex;height:calc(var(--tab-h) + var(--safe-b));padding-bottom:var(--safe-b);flex-shrink:0;box-shadow:0 -4px 20px rgba(0,0,0,0.08)}
-.tab-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:none;color:var(--ink3);transition:color .2s;padding:8px 2px;font-family:'Noto Sans KR',sans-serif}
-.tab-btn.active{color:var(--accent)}.tab-icon{font-size:20px;line-height:1;transition:transform .2s}.tab-btn.active .tab-icon{transform:scale(1.15)}.tab-label{font-size:9px;letter-spacing:.3px;font-weight:500}
+.tabbar{background:var(--card);border-top:1px solid var(--border);display:flex;height:calc(var(--tab-h) + var(--safe-b));padding-bottom:var(--safe-b);flex-shrink:0;box-shadow:0 -4px 20px rgba(0,0,0,0.08);overflow-x:auto;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab-btn{min-width:60px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border:none;background:none;color:var(--ink3);transition:color .2s;padding:8px 4px;font-family:'Noto Sans KR',sans-serif;flex-shrink:0}
+.tab-btn.active{color:var(--accent)}.tab-icon{font-size:18px;line-height:1;transition:transform .2s}.tab-btn.active .tab-icon{transform:scale(1.15)}.tab-label{font-size:8.5px;letter-spacing:.2px;font-weight:500;white-space:nowrap}
 .chap-header{margin-bottom:22px}
-.chap-tag{display:inline-block;background:var(--accent);color:#fff;font-size:9px;text-transform:uppercase;letter-spacing:2px;padding:3px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px}
+.chap-tag{display:inline-block;color:#fff;font-size:9px;text-transform:uppercase;letter-spacing:2px;padding:3px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px}
+.tag-stock{background:var(--accent)}.tag-bond{background:var(--accent4)}.tag-quant{background:var(--accent2)}.tag-factor{background:#0891b2}.tag-sim{background:var(--accent3)}
 .chap-title{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1.05;letter-spacing:1px;color:var(--ink);margin-bottom:8px}
 .chap-desc{font-size:13px;color:var(--ink2);line-height:1.7}
 .learn-card{background:var(--card);border-radius:14px;padding:18px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--border)}
 .learn-card h3{font-size:14px;font-weight:700;margin-bottom:9px;color:var(--ink)}
 .learn-card p{color:var(--ink2);line-height:1.8;margin-bottom:9px;font-size:13px}.learn-card p:last-child{margin-bottom:0}
-.highlight-box{background:linear-gradient(135deg,#fff7ed,#fef3c7);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 14px;margin:10px 0;font-size:12px;color:var(--ink2);line-height:1.7}
+.highlight-box{border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 14px;margin:10px 0;font-size:12px;color:var(--ink2);line-height:1.7;background:linear-gradient(135deg,#fff7ed,#fef3c7)}
+.highlight-box.blue{border-left-color:var(--accent2);background:linear-gradient(135deg,#eff6ff,#e0f2fe)}
+.highlight-box.purple{border-left-color:var(--accent4);background:linear-gradient(135deg,#f5f3ff,#ede9fe)}
+.highlight-box.green{border-left-color:var(--accent3);background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
 .highlight-box strong{color:var(--accent)}
+.highlight-box.blue strong{color:var(--accent2)}.highlight-box.purple strong{color:var(--accent4)}.highlight-box.green strong{color:var(--accent3)}
 .formula-box{background:var(--bg2);border-radius:8px;padding:11px 14px;margin:10px 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);text-align:center}
+/* 비교 테이블 */
+.compare-table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+.compare-table th{background:var(--bg2);padding:8px 10px;text-align:left;font-weight:600;color:var(--ink);border-bottom:2px solid var(--border)}
+.compare-table td{padding:8px 10px;border-bottom:0.5px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:nth-child(even) td{background:var(--bg)}
+/* 개념 그리드 */
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.concept-card{border-radius:10px;padding:13px;border:1px solid}
+.cc-orange{background:#fff7ed;border-color:#fed7aa}.cc-blue{background:#eff6ff;border-color:#bfdbfe}
+.cc-green{background:#f0fdf4;border-color:#bbf7d0}.cc-purple{background:#f5f3ff;border-color:#ddd6fe}
+.cc-teal{background:#f0fdfa;border-color:#99f6e4}.cc-red{background:#fef2f2;border-color:#fecaca}
+.cc-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+.cc-orange .cc-label{color:#c2410c}.cc-blue .cc-label{color:#1d4ed8}.cc-green .cc-label{color:#15803d}
+.cc-purple .cc-label{color:#7c3aed}.cc-teal .cc-label{color:#0f766e}.cc-red .cc-label{color:#dc2626}
+.cc-title{font-size:13px;font-weight:700;margin-bottom:3px}.cc-desc{font-size:11px;color:var(--ink2);line-height:1.5}
+/* 홈 */
 .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
 .stat-card{background:var(--card);border-radius:12px;padding:14px 10px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center}
 .stat-val{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent)}.stat-label{font-size:10px;color:var(--ink3);margin-top:2px}
@@ -53,6 +76,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif
 .hc-title{font-size:13px;font-weight:700;margin-bottom:3px}.hc-desc{font-size:11px;color:var(--ink2);line-height:1.4}
 .hc-bar{height:3px;background:var(--bg3);border-radius:2px;margin-top:12px;overflow:hidden}
 .hc-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .6s}
+/* 팩터 카드 */
 .factor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
 .factor-card{border-radius:12px;padding:14px;transition:transform .15s}.factor-card:active{transform:scale(.97)}
 .fc-value{background:#fff7ed;border:1px solid #fed7aa}.fc-momentum{background:#eff6ff;border:1px solid #bfdbfe}
@@ -60,6 +84,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif
 .fc-name{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;margin-bottom:5px}
 .fc-value .fc-name{color:#c2410c}.fc-momentum .fc-name{color:#1d4ed8}.fc-quality .fc-name{color:#15803d}.fc-lowvol .fc-name{color:#7c3aed}
 .fc-title{font-size:14px;font-weight:700;margin-bottom:4px}.fc-desc{font-size:11px;color:var(--ink2);line-height:1.5}
+/* 시뮬레이터 */
 .sim-wrap{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:12px}
 .slider-row{margin-bottom:16px}
 .slider-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
@@ -75,6 +100,7 @@ input[type=range]{width:100%;height:6px;accent-color:var(--accent);cursor:pointe
 .ss-tag{font-size:9px;padding:2px 6px;border-radius:4px;background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace}
 .ss-tag.blue{background:var(--accent2)}.ss-tag.green{background:var(--accent3)}
 .sim-empty{text-align:center;color:var(--ink3);font-size:13px;padding:24px}
+/* 퀴즈 */
 .quiz-wrap{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
 .quiz-label{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:10px}
 .quiz-q{font-size:14px;font-weight:500;margin-bottom:16px;color:var(--ink);line-height:1.6}
@@ -88,6 +114,7 @@ input[type=range]{width:100%;height:6px;accent-color:var(--accent);cursor:pointe
 .quiz-progress{font-size:11px;color:var(--ink3);font-family:'JetBrains Mono',monospace}
 .btn-next{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:500;display:none;min-height:44px}
 .btn-next.show{display:block}
+/* AI 튜터 */
 .tutor-page{display:none;flex-direction:column;flex:1;overflow:hidden}.tutor-page.active{display:flex}
 .tutor-msgs{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px}
 .msg{display:flex;gap:10px;margin-bottom:14px;animation:fadeUp .25s ease}
@@ -113,95 +140,279 @@ input[type=range]{width:100%;height:6px;accent-color:var(--accent);cursor:pointe
 <header class="topbar">
   <div class="logo">Quant<span>Learn</span></div>
   <div class="top-right">
-    <span class="progress-chip" id="progress-chip">0 / 4</span>
+    <span class="progress-chip" id="progress-chip">0 / 5</span>
     <span class="xp-badge" id="xp-badge">XP 0</span>
   </div>
 </header>
+
 <div class="main" id="main-scroll">
-  <!-- 홈 -->
-  <div class="page active" id="page-home">
-    <div class="chap-header">
-      <div class="chap-tag">QuantLearn</div>
-      <div class="chap-title">퀀트 투자<br>마스터하기</div>
-      <p class="chap-desc">주식 기초부터 팩터 전략까지, AI 튜터와 함께 배우세요.</p>
+
+<!-- ══ 홈 ══ -->
+<div class="page active" id="page-home">
+  <div class="chap-header">
+    <div class="chap-tag tag-stock">QuantLearn</div>
+    <div class="chap-title">퀀트 투자<br>마스터하기</div>
+    <p class="chap-desc">주식·채권 기초부터 팩터 전략까지, AI 튜터와 함께 배우세요.</p>
+  </div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="stat-val" id="stat-done">0</div><div class="stat-label">완료 챕터</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-xp">0</div><div class="stat-label">획득 XP</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-quiz">0</div><div class="stat-label">정답 수</div></div>
+  </div>
+  <div class="home-grid">
+    <div class="home-card" onclick="go('ch1')"><div class="hc-num">01</div><div class="hc-tag">주식 기초</div><div class="hc-title">주식 완전 정복</div><div class="hc-desc">PER·PBR·ROE·배당·시장 심리</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch1" style="width:0%"></div></div></div>
+    <div class="home-card" onclick="go('ch2')"><div class="hc-num">02</div><div class="hc-tag">채권 기초</div><div class="hc-title">채권 완전 정복</div><div class="hc-desc">금리 역설·종류·주식과의 관계</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch2" style="width:0%"></div></div></div>
+    <div class="home-card" onclick="go('ch3')"><div class="hc-num">03</div><div class="hc-tag">퀀트 개념</div><div class="hc-title">퀀트란?</div><div class="hc-desc">팩터·백테스트·리밸런싱 원리</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch3" style="width:0%"></div></div></div>
+    <div class="home-card" onclick="go('ch4')"><div class="hc-num">04</div><div class="hc-tag">팩터 전략</div><div class="hc-title">4대 팩터</div><div class="hc-desc">가치·모멘텀·퀄리티·저변동성</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch4" style="width:0%"></div></div></div>
+    <div class="home-card" onclick="go('ch5')" style="grid-column:1/-1"><div class="hc-num">05</div><div class="hc-tag">실습</div><div class="hc-title">팩터 스크리너 시뮬레이터</div><div class="hc-desc">슬라이더로 직접 종목 필터링 체험</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch5" style="width:0%"></div></div></div>
+  </div>
+</div>
+
+<!-- ══ 챕터 1: 주식 완전 정복 ══ -->
+<div class="page" id="page-ch1">
+  <div class="chap-header">
+    <div class="chap-tag tag-stock">Chapter 1</div>
+    <div class="chap-title">주식<br>완전 정복</div>
+    <p class="chap-desc">주식의 기본 개념부터 투자 지표, 시장 심리까지 깊이 이해합니다.</p>
+  </div>
+
+  <div class="learn-card">
+    <h3>📌 주식이란 무엇인가</h3>
+    <p>주식은 회사의 <strong>소유권 조각</strong>입니다. 삼성전자 주식을 사면 삼성전자의 주인 중 한 명이 되는 거예요. 회사가 이익을 내면 <strong>배당</strong>으로 나눠주고, 회사 가치가 오르면 <strong>주가</strong>도 오릅니다.</p>
+    <p>주식의 수익은 두 가지 경로로 옵니다. 첫째는 주가 상승에 의한 <strong>자본차익</strong>, 둘째는 회사가 이익의 일부를 주주에게 나눠주는 <strong>배당수익</strong>입니다.</p>
+    <div class="highlight-box"><strong>핵심:</strong> 좋은 회사를 합리적인 가격에 사서, 시장이 가치를 인정할 때까지 기다리는 것</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>📊 한국 주식 시장 구조</h3>
+    <p><strong>코스피(KOSPI)</strong> — 삼성전자·현대차 등 대기업. 약 800개 종목. 시가총액 기준 한국 1위 시장.</p>
+    <p><strong>코스닥(KOSDAQ)</strong> — 중소·벤처·바이오 기업. 약 1,700개. 변동성이 코스피보다 큼.</p>
+    <p><strong>코넥스(KONEX)</strong> — 스타트업·초기 기업. 유동성이 낮아 개인 투자자는 접근이 제한적.</p>
+    <div class="highlight-box"><strong>퀀트 팁:</strong> 코스피 200(시총 상위 200개)은 데이터 신뢰도↑ 유동성↑ → 퀀트 전략의 기본 유니버스</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>🔢 핵심 밸류에이션 지표</h3>
+    <div class="formula-box">PER = 주가 ÷ 주당순이익(EPS)</div>
+    <p><strong>PER(주가수익비율)</strong> — 몇 년치 이익이 주가에 반영됐나. PER 10배 = 10년 만에 회수. 낮을수록 저평가. 업종별로 다르므로 같은 업종끼리 비교해야 합니다.</p>
+    <div class="formula-box">PBR = 주가 ÷ 주당순자산(BPS)</div>
+    <p><strong>PBR(주가순자산비율)</strong> — 청산가치 대비 주가. 1배 미만 = 청산가치보다 싸게 거래 중. 한국 시장은 코리아 디스카운트로 PBR 1배 미만 종목이 많습니다.</p>
+    <div class="formula-box">ROE = 순이익 ÷ 자기자본 × 100%</div>
+    <p><strong>ROE(자기자본이익률)</strong> — 내 돈으로 얼마나 잘 버나. 15% 이상이면 우량기업. 버핏이 가장 중시하는 지표입니다.</p>
+    <div class="formula-box">EV/EBITDA = 기업가치 ÷ 세전영업이익</div>
+    <p><strong>EV/EBITDA</strong> — 부채까지 포함한 기업 전체 가치 대비 영업이익. PER보다 기업 간 비교에 정확합니다. 외국인·기관이 자주 씁니다.</p>
+    <div class="highlight-box"><strong>암기법:</strong> PER=몇 년치? / PBR=청산해도 남나? / ROE=돈 버는 능력 / EV/EBITDA=빚 포함 가격</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>💰 배당 투자 이해하기</h3>
+    <div class="formula-box">배당수익률 = 주당배당금 ÷ 주가 × 100%</div>
+    <p><strong>배당</strong>은 회사가 이익의 일부를 주주에게 현금으로 나눠주는 것입니다. 배당수익률 3% = 주가 대비 3%를 매년 현금으로 받는 것.</p>
+    <p><strong>배당성향</strong>은 순이익 중 얼마를 배당으로 나눠주는지 비율입니다. 너무 높으면 투자여력이 없다는 신호일 수도 있어요.</p>
+    <div class="concept-grid">
+      <div class="concept-card cc-orange"><div class="cc-label">고배당주</div><div class="cc-title">배당수익률 4%+</div><div class="cc-desc">금융·통신·유틸리티 업종. 안정적이나 성장성은 낮음.</div></div>
+      <div class="concept-card cc-blue"><div class="cc-label">성장주</div><div class="cc-title">배당 없거나 낮음</div><div class="cc-desc">이익을 재투자해 성장 추구. 네이버·카카오 등.</div></div>
     </div>
-    <div class="stat-row">
-      <div class="stat-card"><div class="stat-val" id="stat-done">0</div><div class="stat-label">완료 챕터</div></div>
-      <div class="stat-card"><div class="stat-val" id="stat-xp">0</div><div class="stat-label">획득 XP</div></div>
-      <div class="stat-card"><div class="stat-val" id="stat-quiz">0</div><div class="stat-label">정답 수</div></div>
+    <div class="highlight-box green"><strong>퀀트 활용:</strong> 고배당 + 낮은 PBR 조합은 한국 시장에서 검증된 안정적 팩터 전략입니다.</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>🧠 시장 심리와 비효율</h3>
+    <p>주가는 단기적으로 <strong>사람의 감정</strong>에 크게 흔들립니다. 이것이 퀀트 투자가 성립하는 근거예요.</p>
+    <div class="concept-grid">
+      <div class="concept-card cc-red"><div class="cc-label">과잉반응</div><div class="cc-title">나쁜 뉴스 = 폭락</div><div class="cc-desc">실제보다 과도하게 팔린 종목이 가치 팩터의 먹이.</div></div>
+      <div class="concept-card cc-purple"><div class="cc-label">군집행동</div><div class="cc-title">남들 따라 매수</div><div class="cc-desc">모멘텀 팩터가 작동하는 원리. 오르면 더 사고 싶다.</div></div>
+      <div class="concept-card cc-teal"><div class="cc-label">손실 회피</div><div class="cc-title">팔기 두려움</div><div class="cc-desc">손실이 확정되는 것이 싫어 손절 못 하는 심리.</div></div>
+      <div class="concept-card cc-green"><div class="cc-label">확증 편향</div><div class="cc-title">믿고 싶은 것만</div><div class="cc-desc">자신의 투자와 반대되는 정보를 무시하는 경향.</div></div>
     </div>
-    <div class="home-grid">
-      <div class="home-card" onclick="go('ch1')"><div class="hc-num">01</div><div class="hc-tag">Chapter 1</div><div class="hc-title">주식 기초</div><div class="hc-desc">PER·PBR·ROE 이해</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch1" style="width:0%"></div></div></div>
-      <div class="home-card" onclick="go('ch2')"><div class="hc-num">02</div><div class="hc-tag">Chapter 2</div><div class="hc-title">퀀트란?</div><div class="hc-desc">팩터·백테스트 원리</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch2" style="width:0%"></div></div></div>
-      <div class="home-card" onclick="go('ch3')"><div class="hc-num">03</div><div class="hc-tag">Chapter 3</div><div class="hc-title">4대 팩터</div><div class="hc-desc">가치·모멘텀·퀄리티</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch3" style="width:0%"></div></div></div>
-      <div class="home-card" onclick="go('ch4')"><div class="hc-num">04</div><div class="hc-tag">Chapter 4</div><div class="hc-title">시뮬레이터</div><div class="hc-desc">직접 팩터 조작 체험</div><div class="hc-bar"><div class="hc-bar-fill" id="bar-ch4" style="width:0%"></div></div></div>
+    <div class="highlight-box"><strong>핵심:</strong> 퀀트는 이 심리적 편향을 체계적으로 이용합니다. 규칙이 감정을 대신합니다.</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>📉 주식 위험 관리</h3>
+    <p><strong>분산투자</strong> — 여러 종목·업종에 나눠 투자해 개별 종목 리스크를 줄입니다. 퀀트는 20~50개 종목 이상을 동시에 보유하는 것이 일반적입니다.</p>
+    <p><strong>시장 리스크 vs 개별 리스크</strong> — 시장 전체가 하락하는 리스크(코로나, 금융위기)는 분산으로 피할 수 없고, 개별 기업 리스크(회계 부정, 오너 리스크)는 분산으로 줄일 수 있습니다.</p>
+    <div class="highlight-box"><strong>퀀트 원칙:</strong> 한 종목에 전 재산을 넣는 것은 퀀트가 아닙니다. 규칙에 따른 분산이 핵심입니다.</div>
+  </div>
+
+  <div class="quiz-wrap">
+    <div class="quiz-label">퀴즈 — 챕터 1</div>
+    <div class="quiz-q" id="q1-text"></div>
+    <div class="quiz-options" id="q1-opts"></div>
+    <div class="quiz-feedback" id="q1-feedback"></div>
+    <div class="quiz-nav"><span class="quiz-progress" id="q1-progress">1 / 4</span><button class="btn-next" id="q1-next" onclick="nextQuiz(1)">다음 →</button></div>
+  </div>
+</div>
+
+<!-- ══ 챕터 2: 채권 완전 정복 ══ -->
+<div class="page" id="page-ch2">
+  <div class="chap-header">
+    <div class="chap-tag tag-bond">Chapter 2</div>
+    <div class="chap-title">채권<br>완전 정복</div>
+    <p class="chap-desc">채권의 작동 원리, 금리와의 관계, 주식과의 차이를 완벽히 이해합니다.</p>
+  </div>
+
+  <div class="learn-card">
+    <h3>📋 채권이란 무엇인가</h3>
+    <p>채권은 <strong>"내가 돈을 빌려줄게, 나중에 이자 붙여서 돌려줘"</strong>라는 증서입니다. 주식이 회사의 주인이 되는 것이라면, 채권은 회사나 정부에 돈을 빌려주는 것입니다.</p>
+    <div class="concept-grid">
+      <div class="concept-card cc-purple"><div class="cc-label">발행자</div><div class="cc-title">돈 빌리는 쪽</div><div class="cc-desc">정부, 기업, 지방자치단체. 채권을 발행해 자금 조달.</div></div>
+      <div class="concept-card cc-blue"><div class="cc-label">투자자</div><div class="cc-title">돈 빌려주는 쪽</div><div class="cc-desc">채권 매입으로 정기 이자(쿠폰) + 만기 원금 수령.</div></div>
+    </div>
+    <div class="formula-box">채권 수익 = 쿠폰(이자) + 만기 시 원금 상환</div>
+    <div class="highlight-box blue"><strong>주식 vs 채권:</strong> 주식은 회사 성과에 따라 수익이 변하지만, 채권은 만기까지 들고 있으면 이자와 원금이 약속대로 돌아옵니다 (발행자가 파산하지 않는 한).</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>⚡ 채권의 핵심 역설 — 금리와 가격</h3>
+    <p>채권 투자에서 가장 중요하고 처음에 헷갈리는 개념입니다.</p>
+    <div class="formula-box">금리 ↑ → 채권 가격 ↓ &nbsp;|&nbsp; 금리 ↓ → 채권 가격 ↑</div>
+    <p><strong>왜 반대로 움직일까요?</strong> 예를 들어 연 3% 이자를 주는 채권을 가지고 있는데, 시장 금리가 5%로 오르면 아무도 내 3% 채권을 안 삽니다. 팔려면 가격을 낮춰야 해요. 반대로 금리가 1%로 떨어지면 내 3% 채권은 귀해져서 가격이 오릅니다.</p>
+    <div class="highlight-box blue"><strong>실전 시사점:</strong> 금리 인하가 예상될 때 장기채권을 사면 가격 상승으로 수익을 볼 수 있습니다. 2022년처럼 금리가 급등하면 채권 투자자는 손실을 봅니다.</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>🗂️ 채권의 종류</h3>
+    <div class="concept-grid">
+      <div class="concept-card cc-blue"><div class="cc-label">국채</div><div class="cc-title">정부 발행</div><div class="cc-desc">한국 국채, 미국 국채(T-Bond). 가장 안전. 금리 낮음.</div></div>
+      <div class="concept-card cc-teal"><div class="cc-label">회사채</div><div class="cc-title">기업 발행</div><div class="cc-desc">삼성전자채, 현대차채 등. 신용등급에 따라 금리 차이.</div></div>
+      <div class="concept-card cc-orange"><div class="cc-label">하이일드</div><div class="cc-title">고위험 회사채</div><div class="cc-desc">신용등급 낮은 기업. 금리 높지만 부도 위험 큼. 투기등급.</div></div>
+      <div class="concept-card cc-green"><div class="cc-label">통화안정채</div><div class="cc-title">한국은행 발행</div><div class="cc-desc">시중 유동성 조절 목적. 단기물 위주.</div></div>
+    </div>
+    <div class="formula-box">신용등급: AAA(최고) → AA → A → BBB(투자적격 하한) → BB 이하(투기)</div>
+    <div class="highlight-box blue"><strong>핵심:</strong> 신용등급이 낮을수록 금리(이자)가 높습니다. 위험한 곳에 빌려줄수록 이자를 더 받는 것.</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>📐 채권 핵심 용어</h3>
+    <div class="formula-box">듀레이션 = 채권 투자금 회수까지 걸리는 평균 기간</div>
+    <p><strong>듀레이션</strong>이 길수록 금리 변화에 민감합니다. 30년 국채는 듀레이션이 길어서 금리가 조금만 올라도 가격이 크게 떨어집니다.</p>
+    <div class="formula-box">YTM(만기수익률) = 지금 가격에 채권을 사서 만기까지 보유 시 연환산 수익률</div>
+    <p><strong>YTM</strong>은 채권 투자의 실질 수익률 비교 기준입니다. "이 채권의 YTM이 4.5%"라면 지금 사서 만기까지 들고 있으면 연 4.5%를 버는 것.</p>
+    <div class="formula-box">스프레드 = 회사채 YTM - 국채 YTM</div>
+    <p><strong>스프레드</strong>는 국채 대비 추가 리스크에 대한 보상입니다. 스프레드가 커지면 시장이 불안해졌다는 신호예요.</p>
+  </div>
+
+  <div class="learn-card">
+    <h3>⚖️ 주식 vs 채권 — 포트폴리오 전략</h3>
+    <table class="compare-table">
+      <tr><th>항목</th><th>주식</th><th>채권</th></tr>
+      <tr><td>수익 원천</td><td>주가 상승 + 배당</td><td>이자(쿠폰) + 가격 변동</td></tr>
+      <tr><td>위험도</td><td>높음</td><td>낮음 (국채 기준)</td></tr>
+      <tr><td>경기 호황</td><td>상승 유리</td><td>금리 오르면 불리</td></tr>
+      <tr><td>경기 침체</td><td>하락 위험</td><td>안전자산 선호로 상승</td></tr>
+      <tr><td>인플레이션</td><td>실물 자산이라 방어</td><td>실질 가치 하락 취약</td></tr>
+    </table>
+    <div class="highlight-box blue"><strong>60/40 포트폴리오:</strong> 주식 60% + 채권 40%는 오랫동안 검증된 균형 포트폴리오입니다. 주식이 하락하면 채권이 방어하는 역할을 합니다.</div>
+  </div>
+
+  <div class="learn-card">
+    <h3>📈 퀀트 투자에서 채권의 역할</h3>
+    <p><strong>안전자산 전환 신호</strong> — 주식 퀀트 모델에서 채권 금리(국채 스프레드)를 매크로 팩터로 활용합니다. 스프레드가 급등하면 위험 신호로 보고 주식 비중을 줄이는 전략이 있어요.</p>
+    <p><strong>절대 모멘텀 전략</strong> — "주식 수익률이 국채 수익률보다 낮으면 현금(채권)으로 이동"하는 방식. 하락장을 피하는 데 효과적입니다.</p>
+    <div class="highlight-box blue"><strong>실전 적용:</strong> 국채 ETF(KODEX 국고채, ACE 미국 30년 국채)를 통해 개인도 쉽게 채권에 투자할 수 있습니다.</div>
+  </div>
+
+  <div class="quiz-wrap">
+    <div class="quiz-label">퀴즈 — 챕터 2</div>
+    <div class="quiz-q" id="q2-text"></div>
+    <div class="quiz-options" id="q2-opts"></div>
+    <div class="quiz-feedback" id="q2-feedback"></div>
+    <div class="quiz-nav"><span class="quiz-progress" id="q2-progress">1 / 4</span><button class="btn-next" id="q2-next" onclick="nextQuiz(2)">다음 →</button></div>
+  </div>
+</div>
+
+<!-- ══ 챕터 3: 퀀트란? ══ -->
+<div class="page" id="page-ch3">
+  <div class="chap-header">
+    <div class="chap-tag tag-quant">Chapter 3</div>
+    <div class="chap-title">퀀트란<br>무엇인가</div>
+    <p class="chap-desc">감이 아닌 숫자로, 전체 시장을 체계적으로 분석합니다.</p>
+  </div>
+  <div class="learn-card"><h3>🧠 퀀트 투자의 본질</h3><p>수학적 규칙으로 투자 결정을 내리는 방식입니다. <strong>"PER 10 이하, 6개월 수익률 +10% 이상 종목 전부 매수"</strong>처럼 명확한 조건을 세웁니다.</p><div class="highlight-box"><strong>일반 투자:</strong> 뉴스 보고 감으로 → 삼성전자 사야겠다<br><strong>퀀트 투자:</strong> 규칙 기반 → 조건 충족 종목 동일 비중 매수</div></div>
+  <div class="learn-card"><h3>⚙️ 퀀트의 3단계</h3><p><strong>① 팩터 발굴</strong> — 과거 데이터로 어떤 조건이 시장을 이기는지 검증</p><p><strong>② 백테스트</strong> — 전략을 과거 10~20년에 적용해 성과 확인</p><p><strong>③ 실전 적용</strong> — 검증된 전략으로 정기적 리밸런싱</p><div class="highlight-box"><strong>핵심:</strong> 검증 → 규칙화 → 기계적 실행. 감정 개입 없음.</div></div>
+  <div class="learn-card"><h3>✅ 장점 / ⚠️ 단점</h3><p><strong>장점</strong> — 감정 배제, 수백 종목 동시 분석, 과거 검증 가능</p><p><strong>단점</strong> — 과거 패턴이 미래에 안 맞을 수 있음, 블랙스완에 취약</p><div class="highlight-box"><strong>오해 정정:</strong> 퀀트 ≠ 단타. 장기 팩터 투자도 퀀트입니다!</div></div>
+  <div class="quiz-wrap">
+    <div class="quiz-label">퀴즈 — 챕터 3</div>
+    <div class="quiz-q" id="q3-text"></div>
+    <div class="quiz-options" id="q3-opts"></div>
+    <div class="quiz-feedback" id="q3-feedback"></div>
+    <div class="quiz-nav"><span class="quiz-progress" id="q3-progress">1 / 3</span><button class="btn-next" id="q3-next" onclick="nextQuiz(3)">다음 →</button></div>
+  </div>
+</div>
+
+<!-- ══ 챕터 4: 팩터 전략 ══ -->
+<div class="page" id="page-ch4">
+  <div class="chap-header">
+    <div class="chap-tag tag-factor">Chapter 4</div>
+    <div class="chap-title">4대 팩터<br>전략</div>
+    <p class="chap-desc">수십 년간 검증된 4가지 핵심 팩터를 이해합니다.</p>
+  </div>
+  <div class="factor-grid">
+    <div class="factor-card fc-value"><div class="fc-name">Factor 01</div><div class="fc-title">가치</div><div class="fc-desc">PER·PBR이 낮은 저평가 종목. 시장이 과도하게 외면한 종목.</div></div>
+    <div class="factor-card fc-momentum"><div class="fc-name">Factor 02</div><div class="fc-title">모멘텀</div><div class="fc-desc">최근 6~12개월 수익률 상위 종목. 오르던 주식은 계속 오른다.</div></div>
+    <div class="factor-card fc-quality"><div class="fc-name">Factor 03</div><div class="fc-title">퀄리티</div><div class="fc-desc">ROE 높고 부채 적은 기업. 재무가 튼튼한 기업은 결국 인정받는다.</div></div>
+    <div class="factor-card fc-lowvol"><div class="fc-name">Factor 04</div><div class="fc-title">저변동성</div><div class="fc-desc">주가 등락이 작은 종목이 장기적으로 더 좋은 성과라는 역설.</div></div>
+  </div>
+  <div class="learn-card"><h3>🔗 멀티팩터 조합이 중요한 이유</h3><p>각 팩터는 시기에 따라 성과가 달라집니다. <strong>가치 + 퀄리티 + 모멘텀</strong>을 조합하면 한 팩터의 부진을 나머지가 보완합니다.</p><div class="highlight-box"><strong>실전 추천:</strong> 가치(40%) + 퀄리티(40%) + 모멘텀(20%)</div></div>
+  <div class="learn-card"><h3>⚠️ 가치 함정 (Value Trap)</h3><p>PER이 낮아도 이익이 계속 줄면 주가가 더 떨어질 수 있습니다. <strong>ROE와 모멘텀을 함께</strong> 확인하세요.</p></div>
+  <div class="quiz-wrap">
+    <div class="quiz-label">퀴즈 — 챕터 4</div>
+    <div class="quiz-q" id="q4-text"></div>
+    <div class="quiz-options" id="q4-opts"></div>
+    <div class="quiz-feedback" id="q4-feedback"></div>
+    <div class="quiz-nav"><span class="quiz-progress" id="q4-progress">1 / 3</span><button class="btn-next" id="q4-next" onclick="nextQuiz(4)">다음 →</button></div>
+  </div>
+</div>
+
+<!-- ══ 챕터 5: 시뮬레이터 ══ -->
+<div class="page" id="page-ch5">
+  <div class="chap-header">
+    <div class="chap-tag tag-sim">Chapter 5</div>
+    <div class="chap-title">스크리너<br>시뮬레이터</div>
+    <p class="chap-desc">슬라이더를 움직여 팩터 조건을 직접 바꿔보세요.</p>
+  </div>
+  <div class="sim-wrap">
+    <div class="slider-row"><div class="slider-top"><span class="slider-label">PER 상한</span><span class="slider-val" id="sv-per">15x</span></div><input type="range" min="3" max="25" value="15" id="s-per" oninput="simUpdate()"></div>
+    <div class="slider-row"><div class="slider-top"><span class="slider-label">PBR 상한</span><span class="slider-val" id="sv-pbr">1.5x</span></div><input type="range" min="0.3" max="4" step="0.1" value="1.5" id="s-pbr" oninput="simUpdate()"></div>
+    <div class="slider-row"><div class="slider-top"><span class="slider-label">6개월 모멘텀 하한</span><span class="slider-val" id="sv-mom">+10%</span></div><input type="range" min="-10" max="50" value="10" id="s-mom" oninput="simUpdate()"></div>
+    <div class="slider-row" style="margin-bottom:0"><div class="slider-top"><span class="slider-label">ROE 하한</span><span class="slider-val" id="sv-roe">8%</span></div><input type="range" min="0" max="30" value="8" id="s-roe" oninput="simUpdate()"></div>
+    <div class="sim-result">
+      <div class="sim-header"><span class="sim-count-label">통과 종목 <span class="sim-count" id="sim-count">0</span>개</span><span style="font-size:10px;color:var(--ink3)">가상 데이터·학습용</span></div>
+      <div class="sim-stocks" id="sim-stocks"></div>
+      <div class="sim-empty" id="sim-empty" style="display:none">조건을 완화해 보세요 🔧</div>
     </div>
   </div>
-  <!-- 챕터 1 -->
-  <div class="page" id="page-ch1">
-    <div class="chap-header"><div class="chap-tag">Chapter 1</div><div class="chap-title">주식 기초</div><p class="chap-desc">퀀트를 배우기 전에 주식의 기본 언어를 알아야 합니다.</p></div>
-    <div class="learn-card"><h3>📌 주식이란?</h3><p>주식은 회사의 <strong>소유권 조각</strong>입니다. 삼성전자 주식 1주를 사면 삼성전자의 아주 작은 주인이 되는 거예요.</p><div class="highlight-box"><strong>핵심:</strong> 좋은 회사를 합리적인 가격에 사서, 시장이 가치를 인정할 때까지 기다리는 것</div></div>
-    <div class="learn-card"><h3>📊 한국 주식 시장</h3><p><strong>코스피(KOSPI)</strong> — 대기업 중심, 약 800개 종목.</p><p><strong>코스닥(KOSDAQ)</strong> — 중소·벤처 기업, 약 1,700개. 변동성 큼.</p><div class="highlight-box"><strong>퀀트 팁:</strong> 코스피 200 = 퀀트 전략의 기본 유니버스 (신뢰도↑ 유동성↑)</div></div>
-    <div class="learn-card"><h3>🔢 핵심 지표 3가지</h3><div class="formula-box">PER = 주가 ÷ 주당순이익(EPS)</div><p><strong>PER</strong> — 몇 년치 이익이 주가에 반영됐나. 낮을수록 저평가.</p><div class="formula-box">PBR = 주가 ÷ 주당순자산(BPS)</div><p><strong>PBR</strong> — 청산가치 대비 주가. 1배 미만 = 저평가 신호.</p><div class="formula-box">ROE = 순이익 ÷ 자기자본 × 100%</div><p><strong>ROE</strong> — 내 돈으로 얼마나 잘 버나. 15% 이상 = 우량기업.</p><div class="highlight-box"><strong>암기법:</strong> PER=몇 년치? / PBR=청산해도 남나? / ROE=돈 버는 능력</div></div>
-    <div class="quiz-wrap"><div class="quiz-label">퀴즈</div><div class="quiz-q" id="q1-text"></div><div class="quiz-options" id="q1-opts"></div><div class="quiz-feedback" id="q1-feedback"></div><div class="quiz-nav"><span class="quiz-progress" id="q1-progress">1 / 3</span><button class="btn-next" id="q1-next" onclick="nextQuiz(1)">다음 →</button></div></div>
+  <div class="learn-card"><h3>💡 시뮬레이터 활용 팁</h3><p><strong>PER만 낮추면?</strong> — 이익이 줄고 있는 기업도 포함됩니다. ROE 조건을 함께 걸어보세요.</p><p><strong>조건이 너무 엄격하면?</strong> — 분산 투자를 위해 최소 10개 이상 통과하도록 조정하세요.</p></div>
+  <div class="quiz-wrap">
+    <div class="quiz-label">퀴즈 — 챕터 5</div>
+    <div class="quiz-q" id="q5-text"></div>
+    <div class="quiz-options" id="q5-opts"></div>
+    <div class="quiz-feedback" id="q5-feedback"></div>
+    <div class="quiz-nav"><span class="quiz-progress" id="q5-progress">1 / 2</span><button class="btn-next" id="q5-next" onclick="nextQuiz(5)">다음 →</button></div>
   </div>
-  <!-- 챕터 2 -->
-  <div class="page" id="page-ch2">
-    <div class="chap-header"><div class="chap-tag">Chapter 2</div><div class="chap-title">퀀트란<br>무엇인가</div><p class="chap-desc">감이 아닌 숫자로, 전체 시장을 체계적으로 분석합니다.</p></div>
-    <div class="learn-card"><h3>🧠 퀀트 투자의 본질</h3><p>수학적 규칙으로 투자 결정을 내리는 방식입니다. <strong>"PER 10 이하, 6개월 수익률 +10% 이상 종목 전부 매수"</strong>처럼 명확한 조건을 세웁니다.</p><div class="highlight-box"><strong>일반 투자:</strong> 뉴스 보고 감으로 → 삼성전자 사야겠다<br><strong>퀀트 투자:</strong> 규칙 기반 → 조건 충족 종목 동일 비중 매수</div></div>
-    <div class="learn-card"><h3>⚙️ 퀀트의 3단계</h3><p><strong>① 팩터 발굴</strong> — 과거 데이터로 어떤 조건이 시장을 이기는지 검증</p><p><strong>② 백테스트</strong> — 전략을 과거 10~20년에 적용해 성과 확인</p><p><strong>③ 실전 적용</strong> — 검증된 전략으로 정기적 리밸런싱</p><div class="highlight-box"><strong>핵심:</strong> 검증 → 규칙화 → 기계적 실행. 감정 개입 없음.</div></div>
-    <div class="learn-card"><h3>✅ 장점 / ⚠️ 단점</h3><p><strong>장점</strong> — 감정 배제, 수백 종목 동시 분석, 과거 검증 가능</p><p><strong>단점</strong> — 과거 패턴이 미래에 안 맞을 수 있음, 블랙스완에 취약</p><div class="highlight-box"><strong>오해 정정:</strong> 퀀트 ≠ 단타. 장기 팩터 투자도 퀀트입니다!</div></div>
-    <div class="quiz-wrap"><div class="quiz-label">퀴즈</div><div class="quiz-q" id="q2-text"></div><div class="quiz-options" id="q2-opts"></div><div class="quiz-feedback" id="q2-feedback"></div><div class="quiz-nav"><span class="quiz-progress" id="q2-progress">1 / 3</span><button class="btn-next" id="q2-next" onclick="nextQuiz(2)">다음 →</button></div></div>
-  </div>
-  <!-- 챕터 3 -->
-  <div class="page" id="page-ch3">
-    <div class="chap-header"><div class="chap-tag">Chapter 3</div><div class="chap-title">4대 팩터<br>전략</div><p class="chap-desc">수십 년간 검증된 4가지 핵심 팩터를 이해합니다.</p></div>
-    <div class="factor-grid">
-      <div class="factor-card fc-value"><div class="fc-name">Factor 01</div><div class="fc-title">가치</div><div class="fc-desc">PER·PBR이 낮은 저평가 종목. 시장이 과도하게 외면한 종목.</div></div>
-      <div class="factor-card fc-momentum"><div class="fc-name">Factor 02</div><div class="fc-title">모멘텀</div><div class="fc-desc">최근 6~12개월 수익률 상위 종목. 오르던 주식은 계속 오른다.</div></div>
-      <div class="factor-card fc-quality"><div class="fc-name">Factor 03</div><div class="fc-title">퀄리티</div><div class="fc-desc">ROE 높고 부채 적은 기업. 재무가 튼튼한 기업은 결국 인정받는다.</div></div>
-      <div class="factor-card fc-lowvol"><div class="fc-name">Factor 04</div><div class="fc-title">저변동성</div><div class="fc-desc">주가 등락이 작은 종목이 장기적으로 더 좋은 성과라는 역설.</div></div>
-    </div>
-    <div class="learn-card"><h3>🔗 멀티팩터 조합이 중요한 이유</h3><p>각 팩터는 시기에 따라 성과가 달라집니다. <strong>가치 + 퀄리티 + 모멘텀</strong>을 조합하면 한 팩터의 부진을 나머지가 보완합니다.</p><div class="highlight-box"><strong>실전 추천:</strong> 가치(40%) + 퀄리티(40%) + 모멘텀(20%)</div></div>
-    <div class="learn-card"><h3>⚠️ 가치 함정 (Value Trap)</h3><p>PER이 낮아도 이익이 계속 줄면 주가가 더 떨어질 수 있습니다. <strong>ROE와 모멘텀을 함께</strong> 확인하세요.</p></div>
-    <div class="quiz-wrap"><div class="quiz-label">퀴즈</div><div class="quiz-q" id="q3-text"></div><div class="quiz-options" id="q3-opts"></div><div class="quiz-feedback" id="q3-feedback"></div><div class="quiz-nav"><span class="quiz-progress" id="q3-progress">1 / 3</span><button class="btn-next" id="q3-next" onclick="nextQuiz(3)">다음 →</button></div></div>
-  </div>
-  <!-- 챕터 4 -->
-  <div class="page" id="page-ch4">
-    <div class="chap-header"><div class="chap-tag">Chapter 4</div><div class="chap-title">스크리너<br>시뮬레이터</div><p class="chap-desc">슬라이더를 움직여 팩터 조건을 직접 바꿔보세요.</p></div>
-    <div class="sim-wrap">
-      <div class="slider-row"><div class="slider-top"><span class="slider-label">PER 상한</span><span class="slider-val" id="sv-per">15x</span></div><input type="range" min="3" max="25" value="15" id="s-per" oninput="simUpdate()"></div>
-      <div class="slider-row"><div class="slider-top"><span class="slider-label">PBR 상한</span><span class="slider-val" id="sv-pbr">1.5x</span></div><input type="range" min="0.3" max="4" step="0.1" value="1.5" id="s-pbr" oninput="simUpdate()"></div>
-      <div class="slider-row"><div class="slider-top"><span class="slider-label">6개월 모멘텀 하한</span><span class="slider-val" id="sv-mom">+10%</span></div><input type="range" min="-10" max="50" value="10" id="s-mom" oninput="simUpdate()"></div>
-      <div class="slider-row" style="margin-bottom:0"><div class="slider-top"><span class="slider-label">ROE 하한</span><span class="slider-val" id="sv-roe">8%</span></div><input type="range" min="0" max="30" value="8" id="s-roe" oninput="simUpdate()"></div>
-      <div class="sim-result">
-        <div class="sim-header"><span class="sim-count-label">통과 종목 <span class="sim-count" id="sim-count">0</span>개</span><span style="font-size:10px;color:var(--ink3)">가상 데이터·학습용</span></div>
-        <div class="sim-stocks" id="sim-stocks"></div>
-        <div class="sim-empty" id="sim-empty" style="display:none">조건을 완화해 보세요 🔧</div>
-      </div>
-    </div>
-    <div class="learn-card"><h3>💡 시뮬레이터 활용 팁</h3><p><strong>PER만 낮추면?</strong> — 이익이 줄고 있는 기업도 포함됩니다. ROE 조건을 함께 걸어보세요.</p><p><strong>조건이 너무 엄격하면?</strong> — 분산 투자를 위해 최소 10개 이상 통과하도록 조정하세요.</p></div>
-    <div class="quiz-wrap"><div class="quiz-label">퀴즈</div><div class="quiz-q" id="q4-text"></div><div class="quiz-options" id="q4-opts"></div><div class="quiz-feedback" id="q4-feedback"></div><div class="quiz-nav"><span class="quiz-progress" id="q4-progress">1 / 2</span><button class="btn-next" id="q4-next" onclick="nextQuiz(4)">다음 →</button></div></div>
-  </div>
+</div>
+
 </div><!-- /main -->
 
-<!-- AI 튜터 레이어 -->
+<!-- AI 튜터 -->
 <div class="tutor-page" id="page-tutor">
   <div class="tutor-msgs" id="tutor-msgs">
     <div class="msg msg-ai">
       <div class="msg-avatar">🤖</div>
-      <div class="msg-bubble"><p>안녕하세요! 퀀트 투자 AI 튜터입니다 📊</p><p>주식 기초부터 팩터 전략까지 무엇이든 질문하세요.</p></div>
+      <div class="msg-bubble"><p>안녕하세요! 퀀트 투자 AI 튜터입니다 📊</p><p>주식·채권 기초부터 팩터 전략까지 무엇이든 질문하세요.</p></div>
     </div>
   </div>
   <div class="tutor-bottom">
     <div class="quick-chips">
       <div class="chip" onclick="sendChip(this.textContent)">PER이 뭔가요?</div>
+      <div class="chip" onclick="sendChip(this.textContent)">채권 금리 역설 설명</div>
+      <div class="chip" onclick="sendChip(this.textContent)">주식 vs 채권 차이</div>
       <div class="chip" onclick="sendChip(this.textContent)">가치 함정이란?</div>
-      <div class="chip" onclick="sendChip(this.textContent)">모멘텀 팩터 설명</div>
-      <div class="chip" onclick="sendChip(this.textContent)">백테스트 방법</div>
+      <div class="chip" onclick="sendChip(this.textContent)">배당투자 전략</div>
+      <div class="chip" onclick="sendChip(this.textContent)">듀레이션이란?</div>
       <div class="chip" onclick="sendChip(this.textContent)">한국 퀀트 유리한가?</div>
-      <div class="chip" onclick="sendChip(this.textContent)">리밸런싱 주기는?</div>
-      <div class="chip" onclick="sendChip(this.textContent)">장기 퀀트 전략 추천</div>
+      <div class="chip" onclick="sendChip(this.textContent)">60/40 포트폴리오란?</div>
     </div>
     <div class="input-row">
       <textarea class="tutor-input" id="tutor-input" rows="1" placeholder="질문을 입력하세요..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"></textarea>
@@ -213,10 +424,11 @@ input[type=range]{width:100%;height:6px;accent-color:var(--accent);cursor:pointe
 <!-- 하단 탭바 -->
 <nav class="tabbar">
   <button class="tab-btn active" onclick="goTab('home',this)"><span class="tab-icon">🏠</span><span class="tab-label">홈</span></button>
-  <button class="tab-btn" onclick="goTab('ch1',this)"><span class="tab-icon">📈</span><span class="tab-label">기초</span></button>
-  <button class="tab-btn" onclick="goTab('ch2',this)"><span class="tab-icon">🔢</span><span class="tab-label">퀀트</span></button>
-  <button class="tab-btn" onclick="goTab('ch3',this)"><span class="tab-icon">⚙️</span><span class="tab-label">팩터</span></button>
-  <button class="tab-btn" onclick="goTab('ch4',this)"><span class="tab-icon">🧪</span><span class="tab-label">실습</span></button>
+  <button class="tab-btn" onclick="goTab('ch1',this)"><span class="tab-icon">📈</span><span class="tab-label">주식</span></button>
+  <button class="tab-btn" onclick="goTab('ch2',this)"><span class="tab-icon">🏦</span><span class="tab-label">채권</span></button>
+  <button class="tab-btn" onclick="goTab('ch3',this)"><span class="tab-icon">🔢</span><span class="tab-label">퀀트</span></button>
+  <button class="tab-btn" onclick="goTab('ch4',this)"><span class="tab-icon">⚙️</span><span class="tab-label">팩터</span></button>
+  <button class="tab-btn" onclick="goTab('ch5',this)"><span class="tab-icon">🧪</span><span class="tab-label">실습</span></button>
   <button class="tab-btn" onclick="goTab('tutor',this)"><span class="tab-icon">🤖</span><span class="tab-label">AI 튜터</span></button>
 </nav>
 
@@ -231,22 +443,39 @@ function goTab(id,btn){
   if(id==='tutor'){ms.style.display='none';document.getElementById('page-tutor').classList.add('active');}
   else{ms.style.display='';document.getElementById('page-'+id).classList.add('active');ms.scrollTop=0;if(id.startsWith('ch'))initQuiz(parseInt(id.replace('ch','')));}
 }
-function go(id){const tabs=document.querySelectorAll('.tab-btn');const labels=['home','ch1','ch2','ch3','ch4','tutor'];const i=labels.indexOf(id);if(i>=0)goTab(id,tabs[i]);}
+function go(id){const tabs=document.querySelectorAll('.tab-btn');const labels=['home','ch1','ch2','ch3','ch4','ch5','tutor'];const i=labels.indexOf(id);if(i>=0)goTab(id,tabs[i]);}
 function addXP(p){state.xp+=p;document.getElementById('xp-badge').textContent='XP '+state.xp;document.getElementById('stat-xp').textContent=state.xp;}
-function markDone(ch){if(state.done.has(ch))return;state.done.add(ch);document.getElementById('bar-'+ch).style.width='100%';document.getElementById('stat-done').textContent=state.done.size;document.getElementById('progress-chip').textContent=state.done.size+' / 4';addXP(50);}
+function markDone(ch){if(state.done.has(ch))return;state.done.add(ch);document.getElementById('bar-'+ch).style.width='100%';document.getElementById('stat-done').textContent=state.done.size;document.getElementById('progress-chip').textContent=state.done.size+' / 5';addXP(50);}
+
 const quizzes={
-  1:[{q:"PER 5배가 의미하는 것은?",opts:["5년치 이익이 주가에 반영","주가가 5배 상승","시총이 이익의 5배","주당 5천원 배당"],ans:0,fb:"PER 5배 = 현재 이익 속도로 5년이면 투자금 회수. 낮을수록 저평가 신호입니다."},
-    {q:"PBR 0.7배인 종목은?",opts:["고평가된 종목","청산가치보다 싸게 거래 중","이익이 7% 증가","ROE가 70%"],ans:1,fb:"PBR 1배 미만 = 지금 회사를 청산하면 주가보다 더 받는다는 의미입니다."},
-    {q:"ROE가 높다는 것은?",opts:["부채가 많다","주가가 비싸다","자기자본으로 돈을 잘 번다","매출이 크다"],ans:2,fb:"ROE = 순이익÷자기자본×100%. 내 돈으로 얼마나 효율적으로 버는지. 15% 이상이면 우량기업입니다."}],
-  2:[{q:"퀀트 vs 일반 투자의 가장 큰 차이는?",opts:["더 많은 자금 필요","규칙 기반 vs 감 기반","단기 투자만 가능","기관만 가능"],ans:1,fb:"퀀트의 핵심은 명확한 규칙으로 감정을 배제하는 것입니다."},
+  1:[
+    {q:"PER 8배인 기업은 무엇을 의미하나요?",opts:["주가가 8배 상승했다","8년치 이익이 현재 주가에 반영","8% 배당수익률","ROE가 8%"],ans:1,fb:"PER = 주가÷EPS. PER 8배 = 현재 이익 속도로 8년이면 투자금 회수. 낮을수록 저평가 신호입니다."},
+    {q:"ROE 20%의 의미는?",opts:["주가가 20% 오름","부채가 20%","자기자본 100원으로 1년에 20원 이익","시총이 20조"],ans:2,fb:"ROE = 순이익÷자기자본×100%. 자기자본으로 얼마나 효율적으로 버는지. 15% 이상이면 우량기업 수준입니다."},
+    {q:"퀀트 투자에서 '시장 심리적 편향'을 활용하는 이유는?",opts:["심리학을 공부해서","사람들의 감정적 반응이 가격 비효율을 만들기 때문","컴퓨터가 심리를 분석해서","기관이 심리를 이용하기 때문"],ans:1,fb:"손실 회피, 군집 행동, 과잉반응 등 심리적 편향이 주가 비효율을 만들고, 퀀트는 이것을 체계적으로 이용합니다."},
+    {q:"분산투자로 줄일 수 없는 위험은?",opts:["개별 기업 회계 부정","오너 리스크","시장 전체 하락(코로나, 금융위기)","특정 업종 규제"],ans:2,fb:"개별 기업 리스크는 분산으로 줄일 수 있지만, 시장 전체가 하락하는 시스템 리스크(금융위기, 팬데믹)는 분산으로도 피할 수 없습니다."}
+  ],
+  2:[
+    {q:"금리가 오르면 기존 채권 가격은?",opts:["오른다","내려간다","변하지 않는다","발행자가 결정"],ans:1,fb:"금리↑ → 채권 가격↓. 시장 금리가 오르면 기존 낮은 이자 채권의 매력이 떨어져 가격이 하락합니다."},
+    {q:"신용등급 BBB 채권이 AAA 채권보다 금리가 높은 이유는?",opts:["발행량이 많아서","만기가 길어서","부도 위험이 높아서 더 높은 이자를 요구","정부가 규제해서"],ans:2,fb:"신용등급이 낮을수록 부도 위험이 크므로 투자자는 더 높은 이자(리스크 프리미엄)를 요구합니다. 위험에 대한 보상입니다."},
+    {q:"60/40 포트폴리오에서 채권 40%의 역할은?",opts:["더 많은 수익 추구","주식이 하락할 때 포트폴리오를 방어하는 완충 역할","세금 절감","레버리지 효과"],ans:1,fb:"경기 침체나 위기 시 주식은 하락하지만 안전자산인 국채는 오르는 경향이 있습니다. 채권이 포트폴리오의 충격을 완화합니다."},
+    {q:"듀레이션이 긴 채권의 특징은?",opts:["금리 변화에 덜 민감하다","금리 변화에 더 민감하게 가격이 움직인다","배당을 많이 준다","원금 손실이 없다"],ans:1,fb:"듀레이션이 길수록 금리 변화에 민감합니다. 30년 국채는 금리가 1% 오르면 가격이 약 20~25% 하락할 수 있습니다."}
+  ],
+  3:[
+    {q:"퀀트 vs 일반 투자의 가장 큰 차이는?",opts:["더 많은 자금 필요","규칙 기반 vs 감 기반","단기 투자만 가능","기관만 가능"],ans:1,fb:"퀀트의 핵심은 명확한 규칙으로 감정을 배제하는 것입니다."},
     {q:"백테스트란?",opts:["실시간 매매 시스템","과거 데이터로 전략을 미리 검증","백화점 투자 전략","100개 종목 동시 매수"],ans:1,fb:"백테스트 = 전략을 과거 데이터에 적용해 작동 여부를 확인하는 과정입니다."},
-    {q:"리밸런싱이란?",opts:["매일 종목 교체","은행 이자 재투자","정해진 주기마다 전략 조건에 맞게 포트폴리오 조정","손절매 기준 설정"],ans:2,fb:"리밸런싱 = 주기적으로 종목을 교체. 장기 퀀트는 연 1~2회가 일반적입니다."}],
-  3:[{q:"모멘텀 팩터의 핵심 아이디어는?",opts:["싸게 사서 비싸게 판다","최근 수익률 좋은 종목이 계속 오르는 경향","재무가 좋은 종목을 산다","변동성이 작은 종목이 안전"],ans:1,fb:"모멘텀 = '오르던 주식은 계속 오른다'. 과거 6~12개월 수익률 상위 종목을 매수하는 전략입니다."},
+    {q:"리밸런싱이란?",opts:["매일 종목 교체","은행 이자 재투자","정해진 주기마다 전략 조건에 맞게 포트폴리오 조정","손절매 기준 설정"],ans:2,fb:"리밸런싱 = 주기적으로 종목을 교체. 장기 퀀트는 연 1~2회가 일반적입니다."}
+  ],
+  4:[
+    {q:"모멘텀 팩터의 핵심 아이디어는?",opts:["싸게 사서 비싸게 판다","최근 수익률 좋은 종목이 계속 오르는 경향","재무가 좋은 종목을 산다","변동성이 작은 종목이 안전"],ans:1,fb:"모멘텀 = '오르던 주식은 계속 오른다'. 과거 6~12개월 수익률 상위 종목을 매수하는 전략입니다."},
     {q:"가치 함정(Value Trap)이란?",opts:["PER이 낮아 주가가 오름","PER은 낮지만 이익이 계속 감소하는 기업","PBR이 높은 기업","모멘텀이 강한 기업"],ans:1,fb:"이익이 계속 줄면 PER이 낮아도 주가가 더 떨어질 수 있어요. ROE와 모멘텀을 함께 확인하세요."},
-    {q:"멀티팩터 전략의 장점은?",opts:["더 많은 종목을 살 수 있다","한 팩터가 부진해도 다른 팩터가 보완","거래 횟수가 줄어든다","세금이 없어진다"],ans:1,fb:"각 팩터는 시기마다 성과가 달라집니다. 조합하면 한 팩터의 부진을 나머지가 완충합니다."}],
-  4:[{q:"팩터 조건을 너무 엄격하게 걸면?",opts:["수익률이 올라간다","통과 종목 없어져 분산투자 불가","백테스트가 좋아진다","리밸런싱이 줄어든다"],ans:1,fb:"분산투자를 위해 최소 10~20개 이상 종목이 통과하도록 조건을 조정하는 것이 좋습니다."},
-    {q:"리밸런싱을 너무 자주 하면?",opts:["수익률이 높아진다","거래비용과 세금이 수익을 깎아먹는다","분산이 잘 된다","팩터 효과가 강해진다"],ans:1,fb:"매매를 자주 할수록 수수료와 세금이 누적됩니다. 연 1~2회 리밸런싱이 비용 효율적입니다."}]
+    {q:"멀티팩터 전략의 장점은?",opts:["더 많은 종목을 살 수 있다","한 팩터가 부진해도 다른 팩터가 보완","거래 횟수가 줄어든다","세금이 없어진다"],ans:1,fb:"각 팩터는 시기마다 성과가 달라집니다. 조합하면 한 팩터의 부진을 나머지가 완충합니다."}
+  ],
+  5:[
+    {q:"팩터 조건을 너무 엄격하게 걸면?",opts:["수익률이 올라간다","통과 종목 없어져 분산투자 불가","백테스트가 좋아진다","리밸런싱이 줄어든다"],ans:1,fb:"분산투자를 위해 최소 10~20개 이상 종목이 통과하도록 조건을 조정하는 것이 좋습니다."},
+    {q:"리밸런싱을 너무 자주 하면?",opts:["수익률이 높아진다","거래비용과 세금이 수익을 깎아먹는다","분산이 잘 된다","팩터 효과가 강해진다"],ans:1,fb:"매매를 자주 할수록 수수료와 세금이 누적됩니다. 연 1~2회 리밸런싱이 비용 효율적입니다."}
+  ]
 };
+
 let quizState={};
 function initQuiz(ch){if(!quizzes[ch])return;quizState[ch]={idx:0,answered:false};renderQuizQuestion(ch);}
 function renderQuizQuestion(ch){
@@ -272,6 +501,7 @@ function nextQuiz(ch){
   if(s.idx>=quizzes[ch].length-1){markDone('ch'+ch);document.getElementById('q'+ch+'-next').className='btn-next';const fb=document.getElementById('q'+ch+'-feedback');fb.className='quiz-feedback ok show';fb.textContent='🎉 챕터 완료! +50 XP 획득. 홈에서 다음 챕터로 이동하세요.';return;}
   s.idx++;renderQuizQuestion(ch);
 }
+
 const simStocks=[
   {name:"현대차",per:5.8,pbr:0.61,mom:22,roe:14},{name:"기아",per:6.1,pbr:0.88,mom:15,roe:18},
   {name:"POSCO",per:7.2,pbr:0.42,mom:18,roe:9},{name:"하나금융",per:4.9,pbr:0.38,mom:12,roe:11},
@@ -292,8 +522,11 @@ function simUpdate(){
   empty.style.display='none';
   el.innerHTML=passed.map(s=>`<div class="sim-stock"><div class="ss-name">${s.name}</div><div class="ss-tags"><span class="ss-tag">PER${s.per}x</span><span class="ss-tag blue">+${s.mom}%</span><span class="ss-tag green">ROE${s.roe}%</span></div></div>`).join('');
 }
+
 const chatHistory=[];
-const SYS=`당신은 퀀트 투자 전문 튜터입니다. 한국어로 친절하고 명확하게 답변하세요. 주식 기초(PER,PBR,ROE)와 퀀트 투자(팩터,백테스트,리밸런싱)를 쉽게 설명합니다. 답변은 간결하게, 핵심만, 예시를 곁들여. 마크다운 없이 일반 텍스트로.`;
+const SYS=`당신은 주식·채권·퀀트 투자 전문 튜터입니다. 한국어로 친절하고 명확하게 답변하세요.
+주식(PER,PBR,ROE,배당,시장심리), 채권(금리역설,듀레이션,신용등급,스프레드), 퀀트투자(팩터,백테스트,리밸런싱)를 쉽게 설명합니다.
+답변은 간결하게, 핵심만, 예시를 곁들여. 마크다운 없이 일반 텍스트로.`;
 async function sendMsg(){
   const input=document.getElementById('tutor-input');const text=input.value.trim();if(!text)return;
   input.value='';input.style.height='auto';appendMsg('user',text);chatHistory.push({role:'user',content:text});await getAIReply();
@@ -323,7 +556,7 @@ async function getAIReply(){
     document.getElementById('typing-ind')?.remove();appendMsg('ai',reply);chatHistory.push({role:'assistant',content:reply});addXP(5);
   }catch(e){
     document.getElementById('typing-ind')?.remove();
-    appendMsg('ai','⚠️ AI 튜터 연결 실패\n\nclaude.ai에서 열면 자동으로 연결됩니다!\n\n그 사이 챕터 1~4를 먼저 공부해 보세요 📚');
+    appendMsg('ai','⚠️ AI 튜터 연결 실패\n\nclaude.ai에서 열면 자동으로 연결됩니다!\n\n그 사이 챕터 1~5를 먼저 공부해 보세요 📚');
   }finally{btn.disabled=false;}
 }
 document.getElementById('tutor-input').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px';});
